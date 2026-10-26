@@ -1,0 +1,397 @@
+{
+  "schema": "clarification-questions/v1",
+  "generated_at": "2026-10-14T10:52:00Z",
+  "user_input": "make a decent design front end also",
+  "title": "Email Drafting Agent Frontend",
+  "assessment_snapshot": {
+    "intro": "The project is a Java 21 / Spring Boot REST API for email analysis and reply generation:",
+    "bullets": [
+      "Spring Boot 3.4.5 with Maven; no dedicated frontend framework or UI screen is present.",
+      "The existing email-processing API and Swagger UI are available; a user-facing frontend would be new.",
+      "A MySQL datasource is configured for persisted email and task results."
+    ]
+  },
+  "proposed_outcome": "Add a polished, responsive user interface to submit email content, display generated intent, tasks, meeting suggestions, and reply drafts, while preserving the existing API and email-processing behavior.",
+  "scope": [
+    "frontend",
+    "generic"
+  ],
+  "status": "awaiting_answers",
+  "questions": [
+    {
+      "id": "F1",
+      "kit": "frontend",
+      "field": "target.framework",
+      "title": "Frontend framework",
+      "question": "Which frontend framework should power the new email drafting screen?",
+      "importance": "required",
+      "impact": 5,
+      "recommended": "Thymeleaf 3.1 with Spring MVC",
+      "default": null,
+      "prefilled": false,
+      "prefilled_value": null,
+      "answer": null,
+      "depends_on": null,
+      "options": [
+        {
+          "value": "Thymeleaf 3.1 with Spring MVC",
+          "label": "Thymeleaf 3.1 with Spring MVC (integrated into the existing Java app)"
+        },
+        {
+          "value": "React 19",
+          "label": "React 19 (separate frontend build)"
+        },
+        {
+          "value": "Vue 3",
+          "label": "Vue 3 (separate frontend build)"
+        }
+      ],
+      "allow_other": true,
+      "type": "single_select"
+    },
+    {
+      "id": "F2",
+      "kit": "frontend",
+      "field": "target.component_library",
+      "title": "UI component library",
+      "question": "Which component library or styling approach should the interface use?",
+      "importance": "required",
+      "impact": 5,
+      "recommended": "Bootstrap 5",
+      "default": null,
+      "prefilled": false,
+      "prefilled_value": null,
+      "answer": null,
+      "depends_on": {
+        "question_id": "F1",
+        "visible_when": [
+          "Thymeleaf 3.1 with Spring MVC"
+        ],
+        "options_when": {
+          "React 19": [
+            {
+              "value": "MUI v7",
+              "label": "Material UI v7"
+            },
+            {
+              "value": "shadcn/ui",
+              "label": "shadcn/ui"
+            },
+            {
+              "value": "Ant Design v6",
+              "label": "Ant Design v6"
+            }
+          ],
+          "Vue 3": [
+            {
+              "value": "PrimeVue 4",
+              "label": "PrimeVue 4"
+            },
+            {
+              "value": "Vuetify 3",
+              "label": "Vuetify 3"
+            }
+          ],
+          "Thymeleaf 3.1 with Spring MVC": [
+            {
+              "value": "Bootstrap 5",
+              "label": "Bootstrap 5"
+            },
+            {
+              "value": "Custom CSS design system",
+              "label": "Custom CSS design system (no component library)"
+            }
+          ]
+        }
+      },
+      "options": [
+        {
+          "value": "Bootstrap 5",
+          "label": "Bootstrap 5"
+        },
+        {
+          "value": "Custom CSS design system",
+          "label": "Custom CSS design system (no component library)"
+        }
+      ],
+      "allow_other": true,
+      "type": "single_select"
+    },
+    {
+      "id": "F4",
+      "kit": "frontend",
+      "field": "visual.design_system",
+      "title": "Visual style",
+      "question": "What design-system reference should guide the new frontend?",
+      "importance": "required",
+      "impact": 4,
+      "recommended": "Create a polished, original email-workspace design",
+      "default": "Create a polished design using project-local CSS tokens",
+      "prefilled": false,
+      "prefilled_value": null,
+      "answer": null,
+      "depends_on": null,
+      "options": [
+        {
+          "value": "Create a polished, original email-workspace design",
+          "label": "Create a polished, original email-workspace design"
+        },
+        {
+          "value": "Match Capgemini branding",
+          "label": "Match Capgemini branding (provide a reference if available)"
+        },
+        {
+          "value": "Use an existing design system",
+          "label": "Use an existing design system (provide its location)"
+        }
+      ],
+      "allow_other": true,
+      "type": "single_select"
+    },
+    {
+      "id": "F5",
+      "kit": "frontend",
+      "field": "compliance.accessibility",
+      "title": "Accessibility",
+      "question": "What accessibility standard should the new screen target?",
+      "importance": "recommended",
+      "impact": 3,
+      "recommended": "WCAG 2.1 AA",
+      "default": "WCAG 2.1 AA",
+      "prefilled": false,
+      "prefilled_value": null,
+      "answer": null,
+      "depends_on": null,
+      "options": [
+        {
+          "value": "WCAG 2.1 AA",
+          "label": "WCAG 2.1 AA"
+        },
+        {
+          "value": "WCAG 2.2 AA",
+          "label": "WCAG 2.2 AA"
+        },
+        {
+          "value": "No formal standard",
+          "label": "No formal standard"
+        }
+      ],
+      "allow_other": true,
+      "type": "single_select"
+    },
+    {
+      "id": "F6",
+      "kit": "frontend",
+      "field": "compatibility.browsers",
+      "title": "Browser support",
+      "question": "Which browsers should the new interface support?",
+      "importance": "recommended",
+      "impact": 2,
+      "recommended": "Modern evergreen browsers",
+      "default": "modern evergreen (Chrome, Firefox, Safari, Edge — latest 2 major versions)",
+      "prefilled": false,
+      "prefilled_value": null,
+      "answer": null,
+      "depends_on": null,
+      "options": [
+        {
+          "value": "Modern evergreen browsers",
+          "label": "Modern Chrome, Edge, Firefox, and Safari"
+        },
+        {
+          "value": "Chrome and Edge only",
+          "label": "Latest Chrome and Edge only"
+        }
+      ],
+      "allow_other": true,
+      "type": "single_select"
+    },
+    {
+      "id": "F7",
+      "kit": "frontend",
+      "field": "responsive.breakpoints",
+      "title": "Responsive layout",
+      "question": "How should the email workspace adapt across desktop and mobile screen sizes?",
+      "importance": "recommended",
+      "impact": 3,
+      "recommended": "Responsive, mobile-first",
+      "default": "mobile-first using existing breakpoints detected from codebase",
+      "prefilled": false,
+      "prefilled_value": null,
+      "answer": null,
+      "depends_on": null,
+      "options": [
+        {
+          "value": "Responsive, mobile-first",
+          "label": "Responsive on desktop, tablet, and mobile"
+        },
+        {
+          "value": "Desktop-focused",
+          "label": "Desktop-focused; mobile use is not required"
+        }
+      ],
+      "allow_other": true,
+      "type": "single_select"
+    },
+    {
+      "id": "F8",
+      "kit": "frontend",
+      "field": "i18n.locales",
+      "title": "Languages",
+      "question": "Which languages should the interface support initially?",
+      "importance": "optional",
+      "impact": 1,
+      "recommended": null,
+      "default": "preserve current locales; keep existing i18n library if present",
+      "prefilled": false,
+      "prefilled_value": null,
+      "answer": null,
+      "depends_on": null,
+      "options": [
+        {
+          "value": "English only",
+          "label": "English only"
+        },
+        {
+          "value": "English and additional locales",
+          "label": "English plus additional locales (specify them)"
+        }
+      ],
+      "allow_other": true,
+      "type": "single_select"
+    },
+    {
+      "id": "F9",
+      "kit": "frontend",
+      "field": "state_mgmt.preference",
+      "title": "Frontend state",
+      "question": "Do you have a preference for managing frontend state and API loading?",
+      "importance": "optional",
+      "impact": 1,
+      "recommended": null,
+      "default": "preserve existing pattern if identifiable; otherwise recommend minimal (component state + server-state library)",
+      "prefilled": false,
+      "prefilled_value": null,
+      "answer": null,
+      "depends_on": null,
+      "options": [
+        {
+          "value": "Minimal state",
+          "label": "Minimal framework/component state"
+        },
+        {
+          "value": "Add a state library",
+          "label": "Add a client-side state-management library"
+        }
+      ],
+      "allow_other": true,
+      "type": "single_select"
+    },
+    {
+      "id": "F10",
+      "kit": "frontend",
+      "field": "routing.preference",
+      "title": "Navigation",
+      "question": "How should navigation and routes work for this single-screen email workspace?",
+      "importance": "optional",
+      "impact": 1,
+      "recommended": "Single page, no added router",
+      "default": "use the de-facto router for the chosen target framework",
+      "prefilled": false,
+      "prefilled_value": null,
+      "answer": null,
+      "depends_on": null,
+      "options": [
+        {
+          "value": "Single page, no added router",
+          "label": "Keep the workspace as a single page without a new routing library"
+        },
+        {
+          "value": "Add framework routing",
+          "label": "Add the chosen framework's standard router"
+        }
+      ],
+      "allow_other": true,
+      "type": "single_select"
+    },
+    {
+      "id": "G1",
+      "kit": "generic",
+      "field": "success.definition",
+      "title": "Definition of done",
+      "question": "What outcome will make this frontend successful?",
+      "importance": "required",
+      "impact": 4,
+      "recommended": null,
+      "default": "A polished, responsive email workspace that submits emails, shows generated results and errors clearly, and preserves all existing API behavior.",
+      "prefilled": false,
+      "prefilled_value": null,
+      "answer": null,
+      "depends_on": null,
+      "type": "text"
+    },
+    {
+      "id": "G2",
+      "kit": "generic",
+      "field": "out_of_scope",
+      "title": "Out of scope",
+      "question": "Are there any screens, APIs, integrations, or behaviors that should not be changed?",
+      "importance": "recommended",
+      "impact": 2,
+      "recommended": null,
+      "default": "no explicit exclusions; agent will infer from project structure",
+      "prefilled": false,
+      "prefilled_value": null,
+      "answer": null,
+      "depends_on": null,
+      "type": "text"
+    },
+    {
+      "id": "G3",
+      "kit": "generic",
+      "field": "existing_tests.posture",
+      "title": "Existing tests",
+      "question": "What should happen to existing tests while adding the frontend?",
+      "importance": "recommended",
+      "impact": 3,
+      "recommended": "must pass",
+      "default": "must pass",
+      "prefilled": false,
+      "prefilled_value": null,
+      "answer": null,
+      "depends_on": null,
+      "options": [
+        {
+          "value": "must pass",
+          "label": "Existing tests must continue to pass"
+        },
+        {
+          "value": "can rewrite",
+          "label": "Tests may be updated if equivalent coverage is preserved"
+        },
+        {
+          "value": "ignore",
+          "label": "Existing tests can be ignored"
+        }
+      ],
+      "allow_other": true,
+      "type": "single_select"
+    },
+    {
+      "id": "G5",
+      "kit": "generic",
+      "field": "constraints.additional",
+      "title": "Additional constraints",
+      "question": "What additional constraints, requirements, dependencies, or preferences should guide this work?",
+      "importance": "optional",
+      "impact": 2,
+      "recommended": null,
+      "default": "None beyond the decisions listed in this specification.",
+      "prefilled": true,
+      "prefilled_value": "None beyond the decisions listed in this specification.",
+      "answer": null,
+      "depends_on": null,
+      "type": "text"
+    }
+  ]
+}
